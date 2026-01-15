@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+public class PencarianNilaiMahasiswa {
+
+    public static int binarySearch(int[] arr, int key) {
+        int left = 0;
+        int right = arr.length - 1;
+        int langkah = 0;
+
+        while (left <= right) {
+            langkah++;
+            int mid = (left + right) / 2;
+
+            if (arr[mid] == key) {
+                System.out.println("Jumlah langkah pencarian: " + langkah);
+                return mid;
+            } else if (arr[mid] < key) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        System.out.println("Jumlah langkah pencarian: " + langkah);
+        return -1; 
+    }
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        int[] nilaiMahasiswa = {50, 60, 65, 70, 75, 80, 85, 90, 95};
+
+        System.out.print("Masukkan nilai yang dicari: ");
+        int cari = input.nextInt();
+
+        int indeks = binarySearch(nilaiMahasiswa, cari);
+
+        if (indeks != -1) {
+            System.out.println("Status: Nilai ditemukan");
+            System.out.println("Indeks ditemukan pada posisi ke-" + indeks);
+        } else {
+            System.out.println("Status: Nilai tidak ditemukan");
+            System.out.println("Indeks: -1");
+        }
+
+        input.close();
+    }
+}
